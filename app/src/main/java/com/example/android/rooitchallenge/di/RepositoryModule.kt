@@ -7,7 +7,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.realm.Realm
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExecutorCoroutineDispatcher
+import kotlinx.coroutines.asCoroutineDispatcher
+import java.util.concurrent.Executors
 import javax.inject.Singleton
 
 @Module
@@ -17,5 +21,6 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideRepository(newsApi: NewsApi): NewsRepository =
-        NewsRepositoryImpl(newsApi, Dispatchers.IO)
+        NewsRepositoryImpl(newsApi, Executors.newSingleThreadExecutor().asCoroutineDispatcher())
+
 }

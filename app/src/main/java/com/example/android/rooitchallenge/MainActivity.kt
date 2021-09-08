@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView.setHasFixedSize(true)
             recyclerView.adapter = adapter
             swipeRefreshLayout.setOnRefreshListener {
-                viewModel.getNews()
+                viewModel.refreshNews()
             }
         }
     }
@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.newsList.observe(this) {
             adapter.submitList(it)
+            viewBinding.swipeRefreshLayout.isRefreshing = false
         }
     }
 }

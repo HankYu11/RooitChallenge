@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id "dagger.hilt.android.plugin"
+    id 'realm-android'
 }
 
 android {
@@ -68,9 +69,6 @@ dependencies {
 
     // Image Loading
     implementation "io.coil-kt:coil:${versions.coil}"
-
-    //interceptor
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
 
 
 }
